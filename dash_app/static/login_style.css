@@ -1,0 +1,18 @@
+#wrapper{
+    width: 1000px;
+    margin: 0px auto;
+}
+
+#registration{
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    margin-right: 100px;
+    margin-left: 50px;
+}
+
+#login{
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+}

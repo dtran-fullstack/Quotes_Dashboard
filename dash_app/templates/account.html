@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Edit Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'account_style.css' %}">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h3>Edit My Account</h3>
+            <p id="link">
+                <a href="/quotes">Back</a>
+                <a href="/logout" class="btn btn-primary">Logout</a>
+            </p>
+        </div>
+        <form action="{{request.session.uid}}/edit" method="POST">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+            {% csrf_token %}
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" placeholder="{{user.first_name}}"><br>
+            <label for="fname">Last Name</label>
+            <input type="text" name="lname" placeholder="{{user.last_name}}"><br>
+            <label for="email">Email</label>
+            <input type="text" name="email" placeholder="{{user.email}}"><br>
+            <button class="btn btn-primary">Update</button>
+        </form>
+    </div>  
+</body>
+
+</html>

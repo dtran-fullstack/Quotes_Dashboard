@@ -1,0 +1,59 @@
+#wrapper{
+    padding: 20px;
+}
+
+#header{
+    margin-bottom: 50px;
+}
+
+h3, #link{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#link{
+    float: right;
+    align-content: space-between;
+}
+
+#quotes, #create{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.quote{
+    border: blue 2px solid;    
+    margin: 5px 0px 5px 0px;
+    padding: 15px;
+}
+
+#like span{
+    margin-right: 50%;
+}
+
+
+a{
+    font-weight: bold;
+}
+
+#quotes{
+    width: 55%;
+    margin-right: 100px;
+}
+
+#create{
+    width: 30%;
+}
+
+.form-group{
+    margin: 10px;
+}
+
+#quote{
+    overflow-y: scroll;
+}
+
+#submit{
+    float: right;
+    margin-right: 10px;
+}

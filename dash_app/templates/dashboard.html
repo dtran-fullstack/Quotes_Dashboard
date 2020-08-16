@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Quotes Dashboard</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h3>Welcome <span>{{request.session.name}}</span>!</h3>
+            <p id="link">
+                <a href="/myaccount/{{request.session.uid}}">Edit My Account</a>
+                <a href="/logout" class="btn btn-primary">Logout</a>
+            </p>
+            {% load static %}
+            <link rel="stylesheet" href="{% static 'dash_style.css' %}">
+        </div>
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        <div id="quotes">
+            <h3>Quotes</h3>
+            {% for quote in quotes reversed%}
+            <div class="quote">
+                <p>{{quote.author}}: "{{quote.content}}"</p>
+                <p>Posted by <a href="/user/{{quote.poster.id}}">{{quote.poster.fullname}}</a></p>
+                <p id="like">
+                    <span>{{quote.likes.count}} people like this quote</span>
+                    <a href="/like/{{quote.id}}" class="btn btn-primary like">Like!</a>
+                </p>
+                {% if request.session.uid == quote.poster.id %}
+                <a href="quotes/{{quote.id}}/delete">Delete</a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <div id="create">
+            <h3>Add a Quote!</h3>
+            <form action="/post" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" name="author" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="content">Quote</label>
+                    <textarea name="content" id="quote" class="form-control" cols="30" rows="6"></textarea>
+                </div>
+                <button id="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

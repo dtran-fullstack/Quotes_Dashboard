@@ -1,0 +1,23 @@
+#wrapper{
+    padding: 20px;
+}
+
+#header{
+    margin-bottom: 50px;
+}
+
+h3, #link{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#link{
+    float: right;
+    align-content: space-between;
+}
+
+.quotes{
+    border: blue 2px solid;
+    width: 40%;
+    padding: 10px;
+}

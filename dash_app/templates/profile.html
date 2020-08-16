@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>User Quotes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'profile_style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <h3>{{poster.fullname}}'s Quotes</h3>
+            <p id="link">
+                <a href="/quotes">Back</a>
+                <a href="/logout" class="btn btn-primary">Logout</a>
+            </p>
+        </div>
+        {% for quote in poster.posted_quotes.all%}
+        <p class="quotes">{{quote.author}}: "{{quote.content}}"</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
